@@ -1,11 +1,10 @@
 import React from 'react';
 import './App.css';
+import Minesweeper from './Minesweeper';
 
 function App() {
   return (
-    <div className="jumbotron">
-      <h1> Hello World </h1>
-    </div>
+    <Minesweeper/>
   );
 }
 
