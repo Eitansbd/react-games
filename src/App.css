@@ -1,0 +1,34 @@
+.top-margin {
+  margin-top: 60px;
+}
+.square {
+  box-sizing: border-box;
+  height: 30px;
+  width: 30px;
+  padding: 0px;
+  border-radius: 0;
+  border: black solid 0.5px;
+  font-weight: bold;
+  background-color: #c1c1c1;
+}
+
+.square:focus {
+  box-shadow: none;
+}
+
+.board-row {
+  width: auto;
+  margin-bottom: 0px;
+}
+
+.game-board {
+  width: auto;
+}
+
+.clicked {
+  background-color: #a5a5a5;
+}
+
+.bomb {
+  background-color: #da1d1d;
+}
