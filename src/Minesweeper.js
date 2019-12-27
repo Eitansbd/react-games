@@ -40,7 +40,8 @@ class Minesweeper extends React.Component {
     return ({ 
       board: board,
       visibleBoard: visibleBoard,
-      previousVisibleBoard: visibleBoard,
+      visibleBoardHistory: [],
+      moveNumber: 0,
       gameOver: false,
       difficulty: difficulty,
     });
@@ -185,8 +186,11 @@ class Minesweeper extends React.Component {
       this.handleSafeGuess(row_index, col_index);
     } 
     
+    let visibleBoardHistory = this.state.visibleBoardHistory.slice();
+    visibleBoardHistory.push(this.state.visibleBoard)
+    
     this.setState({
-      previousVisibleBoard: this.state.visibleBoard,
+      visibleBoardHistory: visibleBoardHistory,
     });
     
   }
@@ -199,9 +203,16 @@ class Minesweeper extends React.Component {
   }
   
   undoMove(){
-    const previousVisibleBoard = this.state.previousVisibleBoard;
+    if (!this.state.visibleBoardHistory.length) {
+      return;
+    }
+    
+    const numOfMoves = this.state.visibleBoardHistory.length;
+    const previousVisibleBoard = this.state.visibleBoardHistory[numOfMoves - 1];
+    const visibleBoardHistory = this.state.visibleBoardHistory.slice(0, numOfMoves - 1);
     
     this.setState({
+      visibleBoardHistory: visibleBoardHistory,
       visibleBoard: previousVisibleBoard,
       gameOver: false,
     });
