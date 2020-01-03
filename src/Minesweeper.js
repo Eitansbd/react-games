@@ -125,7 +125,7 @@ class Minesweeper extends React.Component {
         const surroundingSquares = this.surroundingSquares(row_index, col_index);
         for (let [row_i, col_i] of surroundingSquares) {
           if (board[row_i][col_i] === null){
-            board = this.markSquareSurroundingBombCount(board, row_i, col_i);
+            board = this.markSurroundingBombCount(board, row_i, col_i);
           }
         }
       }
