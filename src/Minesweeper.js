@@ -1,6 +1,7 @@
 import React from 'react';
 import GameBoard from './GameBoard';
-import GameDifficulty from './GameDifficulty'
+import GameDifficulty from './GameDifficulty';
+import Stopwatch from './Stopwatch';
 
 class Minesweeper extends React.Component {
   constructor(props) {
@@ -37,7 +38,7 @@ class Minesweeper extends React.Component {
     
     let visibleBoard = Array(numOfRows).fill(null).map(() => Array(numOfCols).fill(null));
     
-    return ({ 
+    return ({
       board: board,
       visibleBoard: visibleBoard,
       visibleBoardHistory: [],
@@ -116,7 +117,7 @@ class Minesweeper extends React.Component {
     });
   }
   
-  markSquareSurroundingBombCount(board, row_index, col_index){
+  markSurroundingBombCount(board, row_index, col_index){
     const surroundingBombs = this.surroundingBombsCount(row_index, col_index);
     board[row_index][col_index] = surroundingBombs;
       
@@ -157,7 +158,7 @@ class Minesweeper extends React.Component {
         visibleBoard.push(this.state.visibleBoard[i].slice());
       }
       
-      visibleBoard = this.markSquareSurroundingBombCount(visibleBoard, row_index, col_index);
+      visibleBoard = this.markSurroundingBombCount(visibleBoard, row_index, col_index);
       
       this.setState({
         visibleBoard: visibleBoard,
